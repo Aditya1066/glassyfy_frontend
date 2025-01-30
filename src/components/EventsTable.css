@@ -1,0 +1,42 @@
+.table-container {
+  max-height: 400px; /* Set a max height for the scrollable table */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ddd; /* Optional: Add border for better visual distinction */
+  min-height: 400px;
+}
+
+.key-out-of-threshold {
+  color: red; /* Highlight values outside the thresholds */
+  font-weight: bold;
+}
+
+.key-in-threshold {
+  color: green; /* Highlight values within the thresholds */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #007bff; /* Blue header */
+  color: white;
+  position: sticky; /* Sticky header */
+  top: 0;
+  z-index: 2; /* Ensure header stays on top while scrolling */
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9; /* Alternate row colors */
+}
+
+tr:hover {
+  background-color: #f1f1f1; /* Hover effect */
+}

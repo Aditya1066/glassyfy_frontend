@@ -1,0 +1,51 @@
+.connectivity-card {
+    border: none;
+    border-radius: 12px;
+    padding: 20px;
+    height: 100%;
+    width: 100%; /* Ensure full width inside the parent container */
+    background: linear-gradient(135deg, #74ebd5, #acb6e5);
+    color: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex; /* Use flexbox for better alignment */
+    flex-direction: column;
+    align-items: center; /* Center align content */
+    justify-content: space-around; /* Even spacing between items */
+
+}
+
+.status {
+    font-size: 1.4em;
+    font-weight: bold;
+    margin-bottom: 10px; /* Adds spacing between status texts */
+}
+
+.status.connected {
+    color: #4caf50;
+}
+
+.status.disconnected {
+    color: #f44336;
+}
+
+.btn-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.btn {
+    padding: 12px 25px;
+    background-color: white;
+    color: #333;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    font-size: 1em;
+}
+
+.btn:hover {
+    background-color: #ddd;
+    transform: scale(1.05);
+}

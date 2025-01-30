@@ -1,0 +1,15 @@
+.secondary-graph-container {
+  padding: 20px;
+  background: #ffffff; /* Set to white */
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  margin-top: 20px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.secondary-graph-wrapper {
+  height: 250px; /* Maintain graph height */
+  width: 100%;
+}

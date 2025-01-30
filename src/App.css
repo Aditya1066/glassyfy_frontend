@@ -1,0 +1,52 @@
+.App {
+  font-family: 'Poppins', sans-serif;
+  text-align: center;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two equal columns */
+  gap: 20px;
+  padding: 20px;
+}
+
+.dashboard-card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: 200px; /* Prevent cards from stretching excessively */
+}
+
+.connectivity,
+.events,
+.controls {
+  grid-column: span 1; /* Prevent full stretch for individual cards */
+}
+
+.controls {
+  grid-column: span 2; /* Full width for controls */
+}
+
+/* Graphs Section */
+.graphs-section {
+  grid-column: span 2; /* Occupies full grid width */
+  padding-top: 20px;
+}
+
+.graphs-container {
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.graph-card {
+  flex: 1;
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  min-height: 400px;
+}
