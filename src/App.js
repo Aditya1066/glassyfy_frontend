@@ -32,7 +32,7 @@ function App() {
 
   const fetchEvents = async () => {
     try {
-      const response = await fetch('https://g-backend-2.onrender.com/api/events');
+      const response = await fetch('https://glassyfy-backend.onrender.com/api/events');
       if (response.ok) {
         const data = await response.json();
         setEvents(data);

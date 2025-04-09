@@ -27,7 +27,9 @@ function EventsTable({ events }) {
           <thead>
             <tr>
               <th>Key</th>
-              <th>Message</th>
+              <th>ldr_status</th>
+              <th>distance_cm</th>
+              <th>servo_position</th>
               {/* <th>Temperature</th>
               <th>Timestamp</th>
               <th>Datetime</th> */}
@@ -40,7 +42,9 @@ function EventsTable({ events }) {
                   <td className={getKeyClass(event.temperature, event.humidity)}>
                     {event.key}
                   </td>
-                  <td>{event.message}</td>
+                  <td>{event.ldr_status}</td>
+                  <td>{event.distance_cm}</td>
+                  <td>{event.servo_position}</td>
                   {/* <td>{event.temperature}</td>
                   <td>{event.timestamp}</td>
                   <td>{event.datetime}</td> */}
