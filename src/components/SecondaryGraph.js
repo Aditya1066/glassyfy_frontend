@@ -9,20 +9,20 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js';
+
 import './SecondaryGraph.css';
 
-// Register Chart.js Components
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-function SecondaryGraph({ humidityData }) {
+function SecondaryGraph({ events = [] }) {  // <-- Default empty array
   const data = {
-    labels: humidityData.length > 0 ? humidityData.map((item) => item.timestamp) : ['No Data'], // Handle no data case
+    labels: events.map((event) => `Glass ${event.key}`),
     datasets: [
       {
-        label: 'Humidity Levels',
-        data: humidityData.length > 0 ? humidityData.map((item) => item.humidity) : [0], // Handle no data
-        backgroundColor: 'rgba(54, 162, 235, 0.5)', // Bar color
-        borderColor: 'rgba(54, 162, 235, 1)',
+        label: 'Distance (cm)',
+        data: events.map((event) => parseFloat(event.distance_cm)),
+        backgroundColor: 'rgba(75, 192, 192, 0.6)',
+        borderColor: 'rgba(75, 192, 192, 1)',
         borderWidth: 1,
       },
     ],
@@ -33,20 +33,25 @@ function SecondaryGraph({ humidityData }) {
     maintainAspectRatio: false,
     plugins: {
       legend: {
-        display: true,
         position: 'top',
+      },
+      tooltip: {
+        mode: 'index',
+        intersect: false,
       },
     },
     scales: {
       x: {
-        ticks: {
-          color: '#333',
+        title: {
+          display: true,
+          text: 'Event Key',
         },
       },
       y: {
         beginAtZero: true,
-        ticks: {
-          color: '#333',
+        title: {
+          display: true,
+          text: 'Distance (cm)',
         },
       },
     },
@@ -54,7 +59,7 @@ function SecondaryGraph({ humidityData }) {
 
   return (
     <div className="secondary-graph-container">
-      <h3>Humidity Trends</h3>
+      <h2>Distance Trends</h2>
       <div className="secondary-graph-wrapper">
         <Bar data={data} options={options} />
       </div>
