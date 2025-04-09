@@ -4,47 +4,41 @@ import './ControlButtons.css';
 function ControlButtons() {
   const [isRunning, setIsRunning] = useState(false);
 
-  // Function to fetch the current status of the button
   const fetchButtonStatus = async () => {
     try {
-      const response = await fetch('http://localhost:8000/api/control/status');
-      if (!response.ok) {
-        throw new Error('Failed to fetch status');
-      }
+      const response = await fetch('https://glassyfy-backend.onrender.com/api/control/status');
+      if (!response.ok) throw new Error('Failed to fetch status');
       const data = await response.json();
-      setIsRunning(data.status === 'on'); // Set state based on the fetched status
+      setIsRunning(data.status === 'on');
     } catch (error) {
       console.error('Error fetching status:', error);
     }
   };
 
   useEffect(() => {
-    // Fetch the status when the component mounts
     fetchButtonStatus();
-  }, []); // Empty dependency array means this runs only once when the component mounts
+  }, []);
 
-  // Function to handle button click and send status to the backend
   const handleButtonClick = async () => {
-    const status = isRunning ? 'off' : 'on'; // Toggle status between 'on' and 'off'
+    const status = isRunning ? 'off' : 'on';
 
     try {
-      const response = await fetch('https://g-backend-2.onrender.com/api/control', {
+      const response = await fetch('https://glassyfy-backend.onrender.com/api/control', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ status }), // Send status in the body as JSON
+        body: JSON.stringify({ status }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send status');
-      }
+      if (!response.ok) throw new Error('Failed to send status');
 
-      const data = await response.json(); // Get the response in JSON format
-      console.log('Status received successfully:', data); // Log the response
-      setIsRunning(data.status === 'on'); // Update the button state
+      await response.json(); // Not using returned data directly
+      
+      await fetchButtonStatus(); // Re-fetch status from backend (Best Practice)
+      
     } catch (error) {
-      console.error('Error sending status:', error); // Log any error that occurs
+      console.error('Error sending status:', error);
     }
   };
 
